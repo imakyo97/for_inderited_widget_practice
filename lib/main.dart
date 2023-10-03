@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:for_inherited_widget_practice/Screen/home_screen.dart';
+import 'package:for_inherited_widget_practice/overlay_indicator.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,10 +12,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+      home: OverlayIndicator(
+        child: HomeScreen(),
       ),
     );
   }
