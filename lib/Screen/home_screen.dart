@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:for_inherited_widget_practice/Screen/orange_screen.dart';
+import 'package:for_inherited_widget_practice/indicator_inherited.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,15 +18,16 @@ class HomeScreen extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  // TODO: ローディング開始処理を実装
+                  IndicatorInherited.of(context, listen: false)
+                      ?.indicatorNotifier
+                      .showIndicator();
+                  Future.delayed(const Duration(seconds: 3), () {
+                    IndicatorInherited.of(context, listen: false)
+                        ?.indicatorNotifier
+                        .hideIndicator();
+                  });
                 },
                 child: const Text('startLoading'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // TODO: ローディング停止処理を実装
-                },
-                child: const Text('stopLoading'),
               ),
               const SizedBox(height: 20),
               ElevatedButton(

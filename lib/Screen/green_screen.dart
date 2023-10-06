@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:for_inherited_widget_practice/indicator_inherited.dart';
 
 class GreenScreen extends StatelessWidget {
   const GreenScreen({super.key});
@@ -17,21 +18,19 @@ class GreenScreen extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  // TODO: ローディング開始処理を実装
+                  IndicatorInherited.of(context, listen: false)
+                      ?.indicatorNotifier
+                      .showIndicator();
+                  Future.delayed(const Duration(seconds: 3), () {
+                    IndicatorInherited.of(context, listen: false)
+                        ?.indicatorNotifier
+                        .hideIndicator();
+                  });
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green.shade600,
                 ),
                 child: const Text('startLoading'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // TODO: ローディング停止処理を実装
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green.shade600,
-                ),
-                child: const Text('stopLoading'),
               ),
             ],
           ),
