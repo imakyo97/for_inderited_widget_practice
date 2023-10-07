@@ -18,10 +18,14 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         // MaterialAppのbuilderを使うことでNavigatorよりも上の層にWidgetを配置することができる
         builder: (context, child) {
+          final indicatorNotifier =
+              IndicatorInherited.of(context, listen: true)!.indicatorNotifier;
           return Stack(
             children: [
               if (child != null) child,
-              const OverlayIndicator(), // Navigatorよりも上にインジケータのウィジェットを配置
+              OverlayIndicator(
+                indicatorNotifier: indicatorNotifier,
+              ), // Navigatorよりも上にインジケータのウィジェットを配置
             ],
           );
         },
