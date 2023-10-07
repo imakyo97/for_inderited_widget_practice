@@ -12,8 +12,8 @@ class _OverlayIndicatorState extends State<OverlayIndicator> {
   Widget build(BuildContext context) {
     final indicatorNotifier =
         IndicatorInherited.of(context, listen: true)!.indicatorNotifier;
-    return ListenableBuilder(
-      listenable: indicatorNotifier,
+    return AnimatedBuilder(
+      animation: indicatorNotifier,
       builder: ((context, child) {
         return Visibility(
           visible: indicatorNotifier.isLoading,
